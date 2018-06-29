@@ -6,7 +6,67 @@
         xmlns:local="clr-namespace:TypesOfTriggers"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel>
+        <!--Property Trigger-->
+        <Button Content="Merhaba Dünya!" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="Red"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <!--Property Trigger-->
+        <!--Data Trigger-->
+        <CheckBox x:Name="chkbox" Content="Beni Seç"/>
+        <Button Content="Merhaba Dünya!" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Foreground" Value="Red"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=chkbox, Path=IsChecked}" Value="True">
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <!--Data Trigger-->
+        <!--EventTrigger-->
+        <Button Content="Merhaba Dünya!" FontSize="28" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button.Style>
+                <Style TargetType="Button">
+                        <Style.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.100" Storyboard.TargetProperty="FontSize" To="50"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.100" Storyboard.TargetProperty="FontSize" To="18"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <!--EventTrigger-->
+        </StackPanel>
     </Grid>
 </Window>
